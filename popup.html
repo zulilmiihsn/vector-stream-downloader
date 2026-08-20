@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vectorizer.io Downloader</title>
+  <style>
+    /* Premium Clean UI */
+    :root {
+      --primary: #2563eb;
+      --bg-color: #ffffff;
+      --surface-color: #f8fafc;
+      --text-primary: #0f172a;
+      --text-secondary: #64748b;
+      --border-color: #e2e8f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 280px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+    }
+
+    .header {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .app-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+    }
+    
+    .app-info h1 {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    
+    .app-info p {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .status-container {
+      padding: 12px 20px;
+      background: var(--surface-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      transition: all 0.3s;
+    }
+    
+    .status-indicator.active {
+      background: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+
+    .status-text {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .shortcuts {
+      padding: 20px;
+    }
+
+    .shortcut-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    .label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .keys {
+      display: flex;
+      gap: 4px;
+    }
+
+    .key {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: #334155;
+      box-shadow: 0 2px 0 #cbd5e1;
+    }
+
+    .footer {
+      padding: 12px;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      font-size: 10px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="app-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+    </div>
+    <div class="app-info">
+      <h1>SVG Downloader</h1>
+      <p>Clean & Simple</p>
+    </div>
+  </div>
+
+  <div class="status-container">
+    <div class="status-indicator" id="status-dot"></div>
+    <span class="status-text" id="status-text">Checking...</span>
+  </div>
+
+  <div class="shortcuts">
+    <div class="shortcut-row">
+      <span class="label">Quick Download</span>
+    </div>
+    <div class="keys">
+      <span class="key">Alt</span>
+      <span class="key">Shift</span>
+      <span class="key">D</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    by Engineering
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

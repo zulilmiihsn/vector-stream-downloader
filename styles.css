@@ -1,0 +1,170 @@
+/* Vectorizer.io SVG Downloader - Premium Draggable UI */
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --primary-accent: #2563eb;
+  --text-primary: #1e293b;
+  --shadow-lg: 0 10px 30px -5px rgba(0, 0, 0, 0.15), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
+  --shadow-active: 0 5px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* Draggable Download Floating Action Button (FAB) */
+.vectorizer-download-btn {
+  position: fixed;
+  /* Initial Position: Top Right (User Request) */
+  top: 80px; 
+  right: 20px;
+  z-index: 2147483647; /* Max Z-Index to stay on top */
+  
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  padding: 10px 18px; 
+  height: 48px;
+  
+  /* Glassmorphism Effect */
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  
+  color: var(--text-primary);
+  border-radius: 24px; /* Pill shape */
+  
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  
+  cursor: grab; /* Indicates draggable */
+  box-shadow: var(--shadow-lg);
+  
+  transition: transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, background 0.2s;
+  user-select: none; /* Prevent text selection while dragging */
+  touch-action: none;
+}
+
+/* Icon Container */
+.vectorizer-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--primary-accent);
+  border-radius: 50%;
+  color: white;
+}
+
+.vectorizer-download-btn span {
+  padding-right: 4px;
+}
+
+/* Interactive States */
+.vectorizer-download-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: scale(1.02);
+  box-shadow: 0 15px 35px -5px rgba(37, 99, 235, 0.25), 0 8px 15px -5px rgba(0,0,0,0.1);
+}
+
+.vectorizer-download-btn:active {
+  cursor: grabbing;
+  transform: scale(0.96);
+  box-shadow: var(--shadow-active);
+}
+
+.vectorizer-download-btn.is-dragging {
+  cursor: grabbing;
+  transition: none; /* Remove transition for instant follow */
+  opacity: 0.9;
+}
+
+/* SVG Icon */
+.vectorizer-download-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.5;
+}
+
+/* Notification Toast - Modern & Clean */
+.vectorizer-notification {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-150%); /* Start hidden above */
+  z-index: 2147483647;
+  
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  min-width: 320px;
+  padding: 14px 18px;
+  
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.05);
+  
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.vectorizer-notification.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.vectorizer-notification-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ecfdf5;
+  color: #059669;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vectorizer-notification-error .vectorizer-notification-icon {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.vectorizer-notification-content strong {
+  display: block;
+  font-family: -apple-system, sans-serif;
+  font-size: 14px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.vectorizer-notification-content p {
+  margin: 0;
+  font-family: -apple-system, sans-serif;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .vectorizer-download-btn {
+    padding: 10px;
+    border-radius: 50%; /* Circle on mobile */
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+  }
+  .vectorizer-download-btn span {
+    display: none;
+  }
+  .vectorizer-icon-wrapper {
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    color: var(--primary-accent);
+  }
+}
